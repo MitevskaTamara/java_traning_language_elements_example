@@ -1,5 +1,7 @@
 package com.example.training;
 
+import java.util.Arrays;
+
 public class LanguageElementsApplication {
   public static final byte byteValue = 2;
   public static final short shortValue = 4;
@@ -13,11 +15,19 @@ public class LanguageElementsApplication {
   public static final int[] intArray = new int[10];
 
   public static void main(String[] args) {
+    System.out.println("Command line args:" + Arrays.toString(args));
+
     printPrimitiveTypes();
 
     printPrimitiveTypesRange();
 
+    printArrayData();
 
+    executeArithmeticOperations();
+
+    executeComparisonAndLogicalOperations();
+
+    checkIfTwoObjectsAreEqual();
   }
 
   /**
@@ -39,7 +49,7 @@ public class LanguageElementsApplication {
   }
 
   private static void printPrimitiveTypesRange() {
-    System.out.println("-------------------------MIN/MAX range for numeric primitive types-------------------------");
+    System.out.println("-------------MIN/MAX range for numeric primitive types-----------");
 
     System.out.println("Byte Datatype values...");
     System.out.println("Min = " + Byte.MIN_VALUE);
@@ -64,6 +74,64 @@ public class LanguageElementsApplication {
     System.out.println("Double Datatype values...");
     System.out.println("Min = " + Double.MIN_VALUE);
     System.out.println("Max = " + Double.MAX_VALUE);
-    System.out.println("-----------------------------------------------------------------------------------");
+    System.out.println("---------------------------------------------------------------");
+  }
+
+  private static void printArrayData() {
+    intArray[0] = 0;
+    intArray[1] = 1;
+    intArray[2] = 2;
+    intArray[3] = 3;
+    intArray[4] = 4;
+    intArray[5] = 5;
+    System.out.println(Arrays.toString(intArray));
+  }
+
+  private static void executeArithmeticOperations() {
+    int firstNumber = 4;
+    int secondNumber = 2;
+
+    System.out.println("Addition: " + (firstNumber + secondNumber));
+    System.out.println("Subtraction: " + (firstNumber - secondNumber));
+    System.out.println("Multiplication: " + (firstNumber * secondNumber));
+    System.out.println("Division: " + (firstNumber / secondNumber));
+    System.out.println("Modulus: " + (firstNumber % secondNumber));
+    System.out.println("Increment: " + firstNumber++);
+    System.out.println("Decrement: " + firstNumber--);
+  }
+
+  private static void executeComparisonAndLogicalOperations() {
+    int firstNumber = 4;
+
+    System.out.println("4==3: " + (firstNumber == 3));
+    System.out.println("4!=3: " + (firstNumber != 3));
+    System.out.println("4<3: " + (firstNumber < 3));
+    System.out.println("4>3: " + (firstNumber > 3));
+    System.out.println("4<=3: " + (firstNumber <= 3));
+    System.out.println("4>=3: " + (firstNumber >= 3));
+
+
+    System.out.println("4==3 && 4<5: " + ((firstNumber == 3) && (firstNumber <= 5)) );
+    System.out.println("4==3 || 4<5: " + ((firstNumber == 3) || (firstNumber <= 5)));
+    System.out.println("4==3 ^ 4<5: " + ((firstNumber == 3) ^ (firstNumber <= 5)));
+    System.out.println("!(4==3): " + !(firstNumber == 3));
+  }
+
+  private static void checkIfTwoObjectsAreEqual() {
+    Student student1 = new Student("John", "Doe", 194, 200);
+    System.out.println("Student: " + student1.print());
+
+    Student student2 = new Student("John", "Smith", 195, 200);
+    System.out.println("Student: " + student2.print());
+
+    // comparing above created Objects.
+    if(student1.hashCode() == student2.hashCode()) {
+      if(student1.equals(student2))
+        System.out.println("Both Objects are equal. ");
+      else
+        System.out.println("Both Objects are not equal. ");
+    }
+    else
+      System.out.println("Both Objects are not equal. ");
   }
 }
